@@ -1,0 +1,7 @@
+{
+  "name": "bipagemShopee",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
