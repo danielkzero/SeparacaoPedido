@@ -1,0 +1,125 @@
+<!-- eslint-disable @typescript-eslint/no-unused-vars -->
+<template>
+    <ion-list :inset="true" class="m-3 p-0 no-shadow">
+        <ion-item v-for="(item, i) in separacaoItem" :key="i" :color="setColor(item)">
+            <ion-icon class="pe-3" size="large" :icon="qrCodeOutline"></ion-icon>
+            <ion-label class="ion-text-wrap">
+                <div class="ion-text-wrap"> {{ item.CdChamadaProduto }} - {{ item.descricao }}</div>
+                <ion-badge color="dark">
+                    <h2><strong>{{ item.QntConferidaItem }}/{{ item.QntPedidaItem }}</strong></h2>
+                </ion-badge>
+            </ion-label>
+            <ion-note color="dark" slot="end">
+                <ion-button :id="'info'+item.CdChamadaProduto" :color="setColor(item)">
+                    <ion-icon :icon="getIcone(item)"></ion-icon>
+                </ion-button>
+                <ion-popover :trigger="'info'+item.CdChamadaProduto" trigger-action="hover">
+                    <ion-content class="ion-padding">{{ getTexto(item) }}</ion-content>
+                </ion-popover>
+            </ion-note>
+        </ion-item>
+    </ion-list>
+</template>
+<script lang="ts">
+import { checkmarkOutline, qrCodeOutline, alertOutline, warningOutline, skullOutline, ticketOutline } from 'ionicons/icons';
+import { IonList, IonItem, IonNote, IonPopover, IonButton, IonIcon, IonBadge, IonLabel, IonContent } from "@ionic/vue";
+import { defineComponent } from "vue";
+import { SeparacaoItem } from '@/interface/SeparacaoItem'; 
+export default defineComponent({
+    components: {
+        IonList, IonItem, IonNote, IonPopover, IonButton, IonIcon, IonBadge, IonLabel, IonContent
+    },
+    setup() {
+        return {
+            qrCodeOutline, alertOutline, checkmarkOutline, warningOutline, skullOutline, ticketOutline
+        }
+    },
+    props: {
+        abrirBuscarPedido: Boolean,
+        separacaoItem: Array as () => SeparacaoItem[]
+    },
+    methods: {
+        setAbrirBuscarPedido(status: boolean) {
+            this.$emit("setAbrirBuscarPedido", status);
+        },
+        getIcone(item: SeparacaoItem) {
+            //============================
+            // item totalmente conferido
+            //============================
+            if (item.QntConferidaItem - item.QntPedidaItem == 0) {
+                return checkmarkOutline;
+            }
+            //============================
+            // item excedente
+            //============================
+            if (item.QntConferidaItem - item.QntPedidaItem > 0) {
+                return warningOutline;
+            }
+            //============================
+            // item ainda não foi conferido
+            //============================
+            if (item.QntConferidaItem == 0) {
+                return ticketOutline;
+            }
+            //============================
+            // item em conferência
+            //============================
+            if (item.QntConferidaItem != item.QntPedidaItem) {
+                return alertOutline;
+            }
+        },
+        getTexto(item: SeparacaoItem) {
+//============================
+            // item totalmente conferido
+            //============================
+            if (item.QntConferidaItem - item.QntPedidaItem == 0) {
+                return 'Item totalmente conferido';
+            }
+            //============================
+            // item excedente
+            //============================
+            if (item.QntConferidaItem - item.QntPedidaItem > 0) {
+                return 'Item excedeu o pedido';
+            }
+            //============================
+            // item ainda não foi conferido
+            //============================
+            if (item.QntConferidaItem == 0) {
+                return 'Item ainda não foi conferido';
+            }
+            //============================
+            // item em conferência
+            //============================
+            if (item.QntConferidaItem != item.QntPedidaItem) {
+                return 'Item em conferência';
+            }
+        },
+        setColor(item: SeparacaoItem) {
+            //============================
+            // item totalmente conferido
+            //============================
+            if (item.QntConferidaItem - item.QntPedidaItem == 0) {
+                return 'success';
+            }
+            //============================
+            // item excedente
+            //============================
+            if (item.QntConferidaItem - item.QntPedidaItem > 0) {
+                return 'warning';
+            }
+            //============================
+            // item ainda não foi conferido
+            //============================
+            if (item.QntConferidaItem == 0) {
+                return 'light';
+            }
+            //============================
+            // item em conferência
+            //============================
+            if (item.QntConferidaItem != item.QntPedidaItem) {
+                return 'danger';
+            }
+        }
+    }
+});
+</script>

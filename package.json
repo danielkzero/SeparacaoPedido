@@ -1,7 +1,7 @@
 {
-  "name": "bipagemShopee",
+  "name": "SeparacaoPedido",
   "private": true,
-  "version": "1.0.2",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -20,6 +20,7 @@
     "@capacitor/status-bar": "5.0.6",
     "@ionic/vue": "^7.0.0",
     "@ionic/vue-router": "^7.0.0",
+    "animate.css": "^4.1.1",
     "axios": "^1.6.2",
     "boxicons": "^2.1.4",
     "ionicons": "^7.0.0",
@@ -44,5 +45,5 @@
     "vitest": "^0.34.6",
     "vue-tsc": "^1.0.24"
   },
-  "description": "An Ionic project"
+  "description": "Separação de pedidos"
 }

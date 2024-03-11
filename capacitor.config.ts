@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'bipagemShopee',
+  appId: 'com.hydradigiytal.separacaopedido',
+  appName: 'SeparacaoPedido',
   webDir: 'dist',
   server: {
     hostname: 'localhost'
