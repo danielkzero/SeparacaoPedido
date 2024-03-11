@@ -72,6 +72,7 @@ export default defineComponent({
       separacaoItem: [] as SeparacaoItem[]
     };
   },
+  
   setup() {
     return {
       barcodeOutline, flagOutline, searchOutline
