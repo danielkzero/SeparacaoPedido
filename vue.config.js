@@ -9,6 +9,13 @@ module.exports =
         pathRewrite: {
           '^/___pasta/api/v1': '/___pasta/api/v1'
         }
+      },
+      '/api': {
+        target: 'http://191.168.0.12',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '/api'
+        }
       }
     }
   },

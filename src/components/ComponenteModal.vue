@@ -7,7 +7,7 @@
                     Buscar pedido
                 </ion-title>
                 <ion-buttons slot="end">
-                    <ion-button @click="setAbrirBuscarPedido(false)">
+                    <ion-button @click="setClose(false)">
                         Fechar
                     </ion-button>
                 </ion-buttons>
@@ -21,37 +21,39 @@
                         label-placement="stacked" 
                         ref="codigoPedido" 
                         type="text"
-                        placeholder="99999...">
+                        placeholder="99999..."
+                        v-model="NumeroPedido"
+                        @keydown.enter="buscarPedido()">
                     </ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-label class="ion-text-wrap">
                         <strong>Cliente:</strong>
-                        VALEPLAST IND. COM. PLAST. LTDA. LTDA. LTDA. LTDA. LTDA.
+                        {{ Separacao?.NmCliente }}
                     </ion-label>
                 </ion-item>
                 <ion-item>
                     <ion-label class="ion-text-wrap">
                         <strong>Total:</strong> 
-                        R$ 8.502,20
+                        {{ somatorioTotalLiquido() }}
                     </ion-label>
                 </ion-item>
                 <ion-item>
                     <ion-label class="ion-text-wrap">
                         <strong>Peso:</strong> 
-                        2,125kg
+                        {{ somatorioTotalPeso() }}
                     </ion-label>
                 </ion-item>
                 <ion-item>
                     <ion-label class="ion-text-wrap">
                         <strong>Cubagem:</strong> 
-                        0,213m³
+                        {{ somatorioTotalCubagem() }}
                     </ion-label>
                 </ion-item>
                 <ion-item>
                     <ion-label class="ion-text-wrap">
                         <strong>Volume:</strong> 
-                        2,6
+                        {{ somatorioTotalVolume() }}
                     </ion-label>
                 </ion-item>
                 <ion-button expand="block" color="primary" @click="setAbrirBuscarPedido(false)">
@@ -63,7 +65,10 @@
 </template>
 <script lang="ts">
 import { IonModal, IonTitle, IonButton, IonButtons, IonToolbar, IonHeader, IonInput, IonItem, IonLabel, IonList, IonContent } from "@ionic/vue";
+import axios from "axios";
 import { defineComponent } from "vue";
+import { CabecalhoItem } from '../interface/SeparacaoItem';
+import { formatBRL, formatNumero } from '../provider/function';
 export default defineComponent({
     components: {
         IonModal, IonTitle, IonButton, IonButtons, IonToolbar, IonHeader, IonInput, IonItem, IonLabel, IonList, IonContent
@@ -71,10 +76,70 @@ export default defineComponent({
     props: {
         abrirBuscarPedido: false as any
     },
+    data() {
+        return {
+            NumeroPedido: '' as string,
+            Separacao: {} as CabecalhoItem | null
+        }
+    },
     methods: {
-        setAbrirBuscarPedido(status: boolean) {
+        setClose(status: boolean) {
             this.$emit("setAbrirBuscarPedido", status);
+        },
+        setAbrirBuscarPedido(status: boolean) {
+            this.setClose( status);
+            this.$emit("setPedidoSeparar", this.Separacao);
+            this.Separacao = {} as CabecalhoItem | null;
+            this.NumeroPedido = '';
+        },
+        async buscarPedido() {
+            if (this.NumeroPedido != '') {
+                const response = await axios.get('http://191.168.0.12/api/app_separacao/'+this.NumeroPedido);
+                if (response.status == 200) {
+                    this.Separacao = response.data;
+                }
+            }
+        },
+        somatorioTotalLiquido() {
+            let total = 0;
+            
+            if (this.Separacao != null) {
+                this.Separacao?.itens?.map((item: any) => {
+                    total += parseFloat(item.TotalLiquido);
+                });
+            }
+            return formatBRL(String(total));
+        },
+        somatorioTotalPeso() {
+            let total = 0;
+            
+            if (this.Separacao != null) {
+                this.Separacao?.itens?.map((item: any) => {
+                    total += parseFloat(item.Peso);
+                });
+            }
+            return formatNumero(String(total)) + 'kg';
+        },
+        somatorioTotalCubagem() {
+            let total = 0;
+            
+            if (this.Separacao != null) {
+                this.Separacao?.itens?.map((item: any) => {
+                    total += parseFloat(item.Cubagem);
+                });
+            }
+            return formatNumero(String(total)) + 'm³';
+        },
+        somatorioTotalVolume() {
+            let total = 0;
+            
+            if (this.Separacao != null) {
+                this.Separacao?.itens?.map((item: any) => {
+                    total += parseFloat(item.Volume);
+                });
+            }
+            return formatNumero(String(total));
         }
     }
 });
-</script>
+</script> 

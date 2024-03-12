@@ -1,17 +1,51 @@
-export interface SeparacaoItem {
-    CdPedidosDadosPrincipais: number;
+export interface CabecalhoItem {
+  CdChamadaCliente: string,  
+  DataEmissaoPedido: Date, 
+  NmCliente: string,
+  itens: [{
     CdChamadaProduto: string;
-    descricao: string,
-    QntPedidaItem: number;
+    CdPedidosDadosPrincipais: number;
+    Cubagem: number;
+    DataAlteracao: Date;
+    DataCadastro: Date;
+    Finalizado: number;
+    Manual: string;
+    Observacao: string;
+    Peso: number;
     QntConferidaItem: number;
     QntFaltanteItem: number;
-    Manual: string;
-    DataCadastro: Date;
-    UsuarioCadastro: string;
-    DataAlteracao: Date;
+    QntPedidaItem: number;
+    TotalLiquido: number;
     UsuarioAlteracao: string;
-    Observacao: string;
-    Finalizado: number;
-    data_cadastro: Date;
+    UsuarioCadastro: string;
+    Volume: number;
     data_alteracao: Date;
-  }
+    data_cadastro: Date;
+    descricao: string,
+    EAN13: string,
+  }]
+}
+
+
+export interface SeparacaoItem {
+  CdChamadaProduto: string;
+  CdPedidosDadosPrincipais: number;
+  Cubagem: number;
+  DataAlteracao: Date;
+  DataCadastro: Date;
+  Finalizado: number;
+  Manual: string;
+  Observacao: string;
+  Peso: number;
+  QntConferidaItem: number;
+  QntFaltanteItem: number;
+  QntPedidaItem: number;
+  TotalLiquido: number;
+  UsuarioAlteracao: string;
+  UsuarioCadastro: string;
+  Volume: number;
+  data_alteracao: Date;
+  data_cadastro: Date;
+  descricao: string,
+  EAN13: string,
+}
