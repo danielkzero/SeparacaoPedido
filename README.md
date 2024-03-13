@@ -1,9 +1,4 @@
-<p align="center">
-  <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
-</p>
-
-<h3 align="center">Separação de Pedidos</h3>
+<h1 align="center">Separação de Pedidos</h1>
 
 <div align="center">
 
@@ -32,7 +27,7 @@ Sistema de separação de pedidos <br>
 -Todas as ações são por leitura de códigos de barra. <br>
 -Você pesquisa o pedido a ser separado e o seleciona. <br>
 -Após isso, todos os código lidos e encontrados são somados. <br>
--Ao finalizar a separações é concluída.
+-Ao finalizar a separação é concluída.
 
 Desenvolvido em ionic + vue e comunicação via API Rest (desenvolvido em Slim Framework PHP).
 
