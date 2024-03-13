@@ -8,107 +8,82 @@
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
 
 ---
 
-<p align="center"> Few lines describing your project.
-    <br> 
+<p align="center"> 
+  Sistema simples de separação de pedidos. <br> 
+  Desenvolvido em ionic + vue e comunicação via API Rest. <br>
 </p>
 
 ## 📝 Table of Contents
 
-- [About](#about)
-- [Getting Started](#getting_started)
-- [Deployment](#deployment)
-- [Usage](#usage)
-- [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
-- [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
+- [Sobre](#sobre)
+- [Primeiros passos](#primeiros_passos)
+- [Implantação](#implantacao)
+- [Ferramentas usadas](#ferramentas_usadas)
+- [Autor](#autor)
 
-## 🧐 About <a name = "about"></a>
+## 🧐 Sobre <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
+Sistema de separação de pedidos <br>
+-Todas as ações são por leitura de códigos de barra. <br>
+-Você pesquisa o pedido a ser separado e o seleciona. <br>
+-Após isso, todos os código lidos e encontrados são somados. <br>
+-Ao finalizar a separações é concluída.
 
-## 🏁 Getting Started <a name = "getting_started"></a>
+Desenvolvido em ionic + vue e comunicação via API Rest (desenvolvido em Slim Framework PHP).
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+## 🏁 Primeiros passos <a name = "primeiros_passos"></a>
 
-### Prerequisites
+Estas instruções fornecerão uma cópia do projeto em funcionamento em sua máquina local para fins de desenvolvimento e teste. Consulte [implantação](#implantacao) para obter notas sobre como implantar o projeto em um sistema ativo.
 
-What things you need to install the software and how to install them.
+### Pré-requisitos
 
-```
-Give examples
-```
+1. Certifique-se de ter todas as recomendações iniciais para um projeto ionic + vue.
+2. Clone este repositório em seu ambiente de desenvolvimento.
 
-### Installing
+### Instalação
 
-A step by step series of examples that tell you how to get a development env running.
-
-Say what the step will be
+Instale as dependências executando o comando
 
 ```
-Give the example
+npm install
 ```
 
-And repeat
+### Inicie o servidor de desenvolvimento
 
 ```
-until finished
+npm run serve
 ```
 
-End with an example of getting some data out of the system or using it for a little demo.
-
-## 🔧 Running the tests <a name = "tests"></a>
-
-Explain how to run the automated tests for this system.
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+### Compile e compacte para o ambiente de produção
 
 ```
-Give an example
+npm run build
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
+### Análise de erros
 
 ```
-Give an example
+npm run lint
 ```
 
-## 🎈 Usage <a name="usage"></a>
+## 🚀 Implantação <a name = "implantacao"></a>
 
-Add notes about how to use the system.
+Para iniciar a aplicação, siga estas etapas:
 
-## 🚀 Deployment <a name = "deployment"></a>
+1. Certifique-se de ter todas as recomendações iniciais para um projeto ionic + vue.
+2. Clone este repositório em seu ambiente de desenvolvimento.
 
-Add additional notes about how to deploy this on a live system.
+## ⛏️ Ferramentas usadas <a name = "ferramentas_usadas"></a>
 
-## ⛏️ Built Using <a name = "built_using"></a>
-
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
 - [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
+- [Ionic](https://ionicframework.com//) - Mobile Framework
+- [NodeJs](https://nodejs.org/en/) - Servidor
 
-## ✍️ Authors <a name = "authors"></a>
+## ✍️ Autor <a name = "autor"></a>
 
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
-
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
-
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+- [@danielkzero](https://github.com/danielkzero) - Idealizado e desenvolvido
