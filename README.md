@@ -21,7 +21,7 @@
 - [Ferramentas usadas](#ferramentas_usadas)
 - [Autor](#autor)
 
-## 🧐 Sobre <a name = "about"></a>
+## 🧐 Sobre <a name = "sobre"></a>
 
 Sistema de separação de pedidos <br>
 -Todas as ações são por leitura de códigos de barra. <br>
