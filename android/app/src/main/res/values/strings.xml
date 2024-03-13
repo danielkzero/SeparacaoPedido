@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">bipagemShopee</string>
-    <string name="title_activity_main">bipagemShopee</string>
-    <string name="package_name">io.ionic.starter</string>
-    <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="app_name">SeparacaoPedido</string>
+    <string name="title_activity_main">SeparacaoPedido</string>
+    <string name="package_name">com.hydradigiytal.separacaopedido</string>
+    <string name="custom_url_scheme">com.hydradigiytal.separacaopedido</string>
 </resources>

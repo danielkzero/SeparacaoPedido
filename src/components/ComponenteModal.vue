@@ -4,7 +4,7 @@
         <ion-header>
             <ion-toolbar>
                 <ion-title>
-                    Buscar pedido
+                    Buscar pedido?
                 </ion-title>
                 <ion-buttons slot="end">
                     <ion-button @click="setClose(false)">
@@ -23,9 +23,12 @@
                         type="text"
                         placeholder="99999..."
                         v-model="NumeroPedido"
-                        @keydown.enter="buscarPedido()">
+                        @keyup.enter="buscarPedido()">                        
                     </ion-input>
                 </ion-item>
+                <ion-button expand="block" color="primary" @click="buscarPedido()">
+                    PROCURAR
+                </ion-button>
                 <ion-item>
                     <ion-label class="ion-text-wrap">
                         <strong>Cliente:</strong>
@@ -87,7 +90,7 @@ export default defineComponent({
             this.$emit("setAbrirBuscarPedido", status);
         },
         setAbrirBuscarPedido(status: boolean) {
-            this.setClose( status);
+            this.setClose(status);
             this.$emit("setPedidoSeparar", this.Separacao);
             this.Separacao = {} as CabecalhoItem | null;
             this.NumeroPedido = '';
@@ -139,6 +142,14 @@ export default defineComponent({
                 });
             }
             return formatNumero(String(total));
+        }
+    },
+    async mounted() {        
+        const response = await axios.get('http://191.168.0.12/api/app_separacao/112587');
+        if (response.status == 200) {
+            this.Separacao = response.data;
+            console.log(response.data.itens);
+            this.$emit("setPedidoSeparar", this.Separacao);
         }
     }
 });

@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.hydradigiytal.separacaopedido',
+  appId: 'com.hydradigital.separacaopedido',
   appName: 'SeparacaoPedido',
   webDir: 'dist',
   server: {

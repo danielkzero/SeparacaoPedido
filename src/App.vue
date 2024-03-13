@@ -11,7 +11,7 @@
               </ion-button>
             </ion-col>
             <ion-col>
-              <ion-button expand="block" color="dark">
+              <ion-button expand="block" color="dark" @click="setFinalizar()">
                 <ion-icon :icon="flagOutline" slot="start"></ion-icon>FINALIZAR
               </ion-button>
             </ion-col>
@@ -39,16 +39,11 @@
     </ion-header>
     <ion-content>
       <!-- Componente de listagem de itens -->     
-      <ComponenteListaItem :separacaoItem="separacaoItem"></ComponenteListaItem>
+      <ComponenteListaItem ref="componenteListaItem" :separacaoItem="separacaoItem"></ComponenteListaItem>
       <!-- Componente de chamada de modal, para buscar o pedido a ser conferido -->
       <ComponenteModal :abrirBuscarPedido="abrirBuscarPedido" @setAbrirBuscarPedido="setAbrirBuscarPedido" @setPedidoSeparar="setPedidoSeparar"></ComponenteModal>
       <!-- Componente de alertas, para orientar o usuário -->
-      <ion-toast
-        ref="myToast"
-        :message="toastMessage"
-        :duration="toastDuration"
-        class="custom-toast"
-      ></ion-toast>
+      <ion-toast ref="myToast" :message="toastMessage" :duration="toastDuration" class="custom-toast"></ion-toast>
     </ion-content>    
   </ion-app>
 </template>
@@ -97,7 +92,7 @@ export default defineComponent({
     async showToast() {
       const toast = await toastController.create({
         message: 'Esse produto não existe na lista.',
-        duration: 5000,
+        duration: 8000,
         positionAnchor: 'header',
         position: 'top'
       });
@@ -128,7 +123,22 @@ export default defineComponent({
         found.QntConferidaItem = total;
       }
       this.CodigoProduto = '';
-    },    
+
+      const itemIndex = this.separacaoItem.findIndex(item => item === found);
+      if (itemIndex !== -1) {
+        const itemList = this.$refs.componenteListaItem.$el;
+        setTimeout(() => {
+          itemList.children[itemIndex].scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest'
+          });
+        }, 100);
+      }
+    }, 
+    async setFinalizar() {
+      console.log("finalizado!");
+    }
   }
 });
 </script>

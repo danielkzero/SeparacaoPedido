@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.hydradigiytal.separacaopedido;
 
 import com.getcapacitor.BridgeActivity;
 
