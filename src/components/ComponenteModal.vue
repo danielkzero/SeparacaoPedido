@@ -4,7 +4,7 @@
         <ion-header>
             <ion-toolbar>
                 <ion-title>
-                    Buscar pedido?
+                    Buscar pedido
                 </ion-title>
                 <ion-buttons slot="end">
                     <ion-button @click="setClose(false)">
@@ -144,13 +144,15 @@ export default defineComponent({
             return formatNumero(String(total));
         }
     },
-    async mounted() {        
+    async mounted() { 
+        /*       
         const response = await axios.get('http://191.168.0.12/api/app_separacao/112587');
         if (response.status == 200) {
             this.Separacao = response.data;
-            console.log(response.data.itens);
+            //console.log(response.data.itens);
             this.$emit("setPedidoSeparar", this.Separacao);
         }
+        */
     }
 });
 </script> 

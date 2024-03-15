@@ -18,4 +18,15 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom'
   },
+  server: {
+    port: 5173,
+    cors: true,
+    proxy: {
+      '/api': {
+        target: 'http://191.168.0.12/api',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
 })

@@ -3,15 +3,8 @@ module.exports =
 {
   devServer: {
     proxy: {
-      '/___pasta/api/v1': {
-        target: 'http://191.168.0.12',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/___pasta/api/v1': '/___pasta/api/v1'
-        }
-      },
       '/api': {
-        target: 'http://191.168.0.12',
+        target: 'http://191.168.0.12/api',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/api'
