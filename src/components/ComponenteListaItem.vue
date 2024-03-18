@@ -109,7 +109,7 @@ export default defineComponent({
             // item totalmente conferido
             //============================
             if (item.QntConferidaItem - item.QntPedidaItem == 0) {
-                //this.playOk();
+                this.playAudio('@/sounds/ok2.wav');
                 return 'success';
             }
             //============================
@@ -128,9 +128,14 @@ export default defineComponent({
             // item em conferência
             //============================
             if (item.QntConferidaItem != item.QntPedidaItem) {
-                //this.playCancel();
+                this.playAudio('@/sounds/cancel2.wav');
                 return 'danger';
             }
+        },
+        playAudio(audioFile) {
+            const audio = new Audio();
+            audio.src = audioFile;
+            audio.play();
         },
         playCancel() {
             const audioFile = '@/sounds/cancel2.wav'; 
